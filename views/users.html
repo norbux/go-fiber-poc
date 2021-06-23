@@ -1,0 +1,61 @@
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+<link href="css/main.css" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="js/grid.js"></script>
+
+{{template "partials/header" .}}
+
+<div id="pagContainer" style="padding: 15px;">
+    <h2>{{.Title}}</h2>
+    
+    <div id="gridTest" style="margin-bottom: 100px;"></div>
+
+    <div id="divIterator" style="margin-bottom: 200px;">
+        <div style="display: flex; border-bottom: 1px solid;">
+            <span style="width: 250px; font-weight: bold;">Name</span>
+            <span style="width: 350px; font-weight: bold;">Location</span>
+        </div>
+        {{range .Data}}
+        <div style="display: flex;">
+            <span style="width: 250px;">{{.Name}}</span>
+            <span style="width: 350px;">{{.Location}}</span>
+        </div>
+        {{end}}
+    </div>
+
+    
+</div>
+
+
+
+{{template "partials/footer" .}}
+<script>
+    window.addEventListener('load', () => {
+        // Prueba de componente de grid
+        // Con definición de columnas
+        let current = 1;
+        let count = 3;
+        let pageSize = 10;
+        let pageCount = 1;
+
+        let grid = Object.create(Grid);
+        grid.dataSource = {{.Data}}
+        /*grid.dataSourceParams = {
+            param1: 'valor 1',
+            param2: 4342
+        };*/
+        grid.keyField = 'id';
+        grid.paginate = false;
+        grid.element = document.getElementById('gridTest');
+        grid.columns = [
+            { fieldName: 'name', displayName: 'Name', visible: true },
+            { fieldName: 'location', displayName: 'Location', visible: true, format: '' }
+        ];
+        grid.init(current, count, pageSize, pageCount);
+        grid.getRecords();
+
+        // let output = {{.Data}}
+        // console.log(output);
+    });
+</script>

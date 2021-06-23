@@ -1,0 +1,68 @@
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+<link href="css/main.css" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+{{template "partials/header" .}}
+
+<h1>{{.Title}}</h1>
+
+<form id="form">
+    <input type="text" id="msg" size="64" autofocus autocomplete="off" />
+    <input type="submit" value="Send" />
+</form>
+
+<div id="divOutput"></div>
+
+{{template "partials/footer" .}}
+
+<script>
+    window.onload = function() {
+        let conn;
+        let outputElement = document.getElementById('divOutput');
+
+        document.getElementById("form").onsubmit = function () {
+            if (!conn) {
+                return false;
+            }
+            if (!msg.value) {
+                return false;
+            }
+
+            let message = document.getElementById('msg');
+            conn.send(message.value);
+            message.value = "";
+            return false;
+        };
+
+        if (window["WebSocket"]) {
+            conn = new WebSocket("ws://localhost:3000/ws");
+
+            conn.onclose = event => {
+                let message = document.createElement('p');
+                message.style.fontWeight = 'bold';
+                message.innerText = 'Hasta la prosssima';
+                outputElement.appendChild(message);
+            };
+
+            conn.onmessage = event => {
+                let messages = event.data.split('\n');
+                for (let i =0; i < messages.length; i++) {
+                    let message = messages[i];
+                    let elem = document.createElement('p');
+                    elem.style.color = 'blue';
+                    elem.innerText = message;
+                    outputElement.appendChild(elem);
+                }
+            };
+        }
+        else {
+            let message = 'Browser no soporta websockets';
+            let elem = document.createElement('p');
+            elem.style.color = 'red';
+            elem.innerText = message;
+            outputElement.appendChild(elem);
+        }
+
+    }
+</script>

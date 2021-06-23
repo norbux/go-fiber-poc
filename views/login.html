@@ -1,0 +1,32 @@
+{{template "partials/header" .}}
+<link href="css/main.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+
+<div style="margin-left: calc(50% - 50px); margin-top: 25px;">
+    <h1>{{.Title}}</h1>
+</div>
+<div class="card-login">
+    <!-- <form id="frmLogin" name="frmLogin" method="POST" action="/login"> -->
+    <form id="frmLogin" name="frmLogin" method="POST">
+        <span class="edt-label">User</span><br />
+        <input class="edt-login" type="text" id="user" name="user"><br />
+
+        <span class="edt-label">Password</span><br />
+        <input class="edt-login" type="password" id="password" name="password"><br />
+        <input class="btn-login" type="submit" value="Login">
+    </form>
+</div>
+{{template "partials/footer" .}}
+<script src="js/app.js"></script>
+<script>
+    // let creds = getCookie('creds');
+    // if (creds) {
+    //     console.log(creds);
+    //     document.location = '/index';
+    // }
+
+    frmLogin.onsubmit = (e) => {
+        login(e);
+    };
+</script>

@@ -1,0 +1,138 @@
+body {
+    background: #eee;
+    font-family: 'Raleway', sans-serif;
+    margin: 0px;
+}
+
+.header {
+    display: block;
+    /* margin: -10px !important; */
+    background: #032f9075;
+    color: #eee;
+    padding: 1px 15px;
+}
+
+.card-login {
+    margin: auto;
+    width: 400px;
+    padding: 15px 20px;
+    border: 1px solid;
+    border-radius: 7px;
+    border-color: #ddd;
+    background: #fff;
+    box-shadow: 2px 2px 8px #ccc;
+}
+
+.btn-login {
+    padding: 10px 25px;
+    font-weight: bold;
+    font-size: 16px;
+    background: #032f9075;
+    color: #eee;
+    border: 1px solid;
+    border-color: #ddd;
+    border-radius: 5px;
+    box-shadow: 2px 2px 7px #ccc;
+    margin-top: 17px;
+    margin-left: calc(50% - 50px)
+}
+
+.edt-login {
+    width: 100%;
+    border: 1px solid;
+    border-color: dodgerblue;
+    height: 30px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+.edt-login:focus-visible {
+    outline: 2px dodgerblue;
+    border: 2px solid dodgerblue;
+}
+
+.edt-label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #777;
+}
+
+/* Grid styles */
+.grid-header {
+    background-color: #ddd;
+    font-weight: bold;
+    font-size: 14px;
+    padding: 5px;
+    border: solid 1px;
+    border-color: #ddd;
+  
+  }
+  
+  .grid-cell {
+    font-size: 12px;
+    padding: 5px;
+    border-bottom: solid 1px;
+    border-color: #ddd;
+  
+  }
+  
+  [data-cols="2"] {
+    width: calc(100% / 2);
+  }
+
+  [data-cols="3"] {
+    width: calc(100% / 3);
+  }
+  
+  [data-cols="4"] {
+    width: calc(100% / 4);
+  }
+  
+  [data-cols="5"] {
+    width: calc(100% / 5);
+  }
+  
+  [data-cols="6"] {
+    width: calc(100% / 6);
+  }
+  
+  [data-cols="7"] {
+    width: calc(100% / 7);
+  }
+  
+  [data-cols="8"] {
+    width: calc(100% / 8);
+  }
+  
+  [data-cols="9"] {
+    width: calc(100% / 9);
+  }
+  
+  [data-cols="10"] {
+    width: calc(100% / 10);
+  }
+  
+  .grid-row {
+    display: flex;
+  }
+  
+  .grid-row:hover {
+    background-color: #0366d615;
+  }
+  
+  .grid-row-selected {
+    background-color: #0366d650;
+  }
+  
+  .edt-style {
+    height: 24px;
+    font-size: 14px;
+  }
+  
+  .edt-label-style {
+    font-size: 14px;
+  }
+  
+  .btn-acciones {
+    font-size: 11px;
+  }
