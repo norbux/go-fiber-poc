@@ -47,14 +47,11 @@ func Setup(app *fiber.App) {
 		ErrorHandler: RedirectToLogin,
 	}))
 
-
-	app.Get("/", handler.Login)
-
-	app.Get("/index", handler.Index)
-
+	
 	// Rutas autenticadas
+	app.Get("/", handler.Login)
+	app.Get("/index", handler.Index)
 	app.Get("/GetData/:id", handler.GetData)
-
 	app.Get("/GetUsers", handler.GetUsers)
 
 	// Not found route

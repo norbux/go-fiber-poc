@@ -18,14 +18,6 @@ import (
 
 var db *sql.DB
 
-const (
-	host = "localhost"
-	port = 5432
-	user = "postgres"
-	password = "123"
-	dbname = "go_test"
-)
-
 func Connect() error {
 	env_err := godotenv.Load()
 	if env_err != nil {
@@ -65,19 +57,7 @@ func dbConnect() {
 }
 
 func Login(c *fiber.Ctx) error {
-	// user := c.Locals("user").(*jwt.Token)
-
-	// if user.Valid {
-	// 	c.Redirect("/index")
-	// }
-
 	if c.Method() == "GET" {
-		// creds := c.Cookies("creds")
-		// if len(creds) > 0 {
-		// 	c.Append("Authorization", "Basic " + creds)
-		// 	return c.Redirect("/index")
-		// }
-		
 		return c.Render("login", fiber.Map{
 			"Title": "Lojjin",
 		})
