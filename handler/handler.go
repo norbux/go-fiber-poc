@@ -59,7 +59,7 @@ func dbConnect() {
 func Login(c *fiber.Ctx) error {
 	if c.Method() == "GET" {
 		return c.Render("login", fiber.Map{
-			"Title": "Lojjin",
+			"Title": "Login",
 		})
 	} else if c.Method() == "POST" {
 		user := c.FormValue("user")

@@ -16,7 +16,7 @@ func Setup(app *fiber.App) {
 	// Auth routes
 	app.Get("/login", handler.Login)
 	app.Post("/login", handler.Login)
-
+	
 	app.Use("/ws", func(c *fiber.Ctx) error {
 		if c.Get("host") == "localhost:3000" {
 			c.Locals("Host", "Localhost:3000")
@@ -25,11 +25,11 @@ func Setup(app *fiber.App) {
 		return c.Status(403).SendString("Request origin not allowed")
 	})
 	app.Get("/ws", websocket.New(handler.WsMessage))
-
+	
 	app.Get("/wsclient", func(c *fiber.Ctx) error {
 		return c.Render("wsclient", fiber.Map{ "Title": "WS client"})
 	})
-
+	
 	//Middleware de captura de token desde el cliente
 	// app.Use(func (c *fiber.Ctx) error {
 	// 	tk := c.Cookies("creds")
@@ -38,7 +38,7 @@ func Setup(app *fiber.App) {
 	// 	}
 	// 	return c.Next()
 	// })
-
+	
 	// JWT middleware
 	app.Use(jwtware.New(jwtware.Config{
 		SigningKey: []byte("secret"),
@@ -46,7 +46,7 @@ func Setup(app *fiber.App) {
 		TokenLookup: "cookie:creds",
 		ErrorHandler: RedirectToLogin,
 	}))
-
+	
 	
 	// Rutas autenticadas
 	app.Get("/", handler.Login)
